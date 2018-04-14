@@ -1,0 +1,30 @@
+wechat insert...
+127.0.0.1:10464 - - [13/Apr/2018 12:58:41] "HTTP/1.1 POST /num" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 19
+NextArticleUrlQueue size after get: 18
+127.0.0.1:10469 - - [13/Apr/2018 12:58:44] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: “生完孩子，我们就离婚吧”
+点击上方收听音频图片：摘自网络音乐：《那个人》周延英凯哥私人微信号：kaizi532结婚无非是为了相爱的两人能够相互扶
+127.0.0.1:10470 - - [13/Apr/2018 12:58:44] "HTTP/1.1 POST /detail" - 200 OK
+Server: 3 receive post of read_like num...
+read: 56456, like: 480
+准备入库: Title: “生完孩子，我们就离婚吧”
+点击上方收听音频图片：摘自网络音乐：《那个人》周延英凯哥私人微信号：kaizi532结婚无非是为了相爱的两人能够相互扶
+wechat insert...
+127.0.0.1:10481 - - [13/Apr/2018 12:58:45] "HTTP/1.1 POST /num" - 200 OK
+Traceback (most recent call last):
+  File "E:\Python\Python35\lib\site-packages\web.py-0.40.dev1-py3.5.egg\web\application.py", line 255, in process
+    return p(lambda: process(processors))
+  File "E:\Python\Python35\lib\site-packages\web.py-0.40.dev1-py3.5.egg\web\application.py", line 642, in processor
+    h()
+  File "E:\Python\Python35\lib\site-packages\web.py-0.40.dev1-py3.5.egg\web\application.py", line 738, in __call__
+    self.check(mod)
+  File "E:\Python\Python35\lib\site-packages\web.py-0.40.dev1-py3.5.egg\web\application.py", line 757, in check
+    reload(mod)
+  File "E:\Python\Python35\lib\importlib\__init__.py", line 166, in reload
+    _bootstrap._exec(spec, module)
+  File "<frozen importlib._bootstrap>", line 607, in _exec
+AttributeError: 'NoneType' object has no attribute 'name'
+https://github.com/capsane/WechatArticleSpider.git

@@ -1,0 +1,22 @@
+Host :
+mp.weixin.qq.com
+Connection :
+keep-alive
+X-WECHAT-UIN :
+MzY3ODUxODk3NA%3D%3D
+X-WECHAT-KEY :
+29852f7faa1a6eeb267414ec4147ea743bcadc36cee24fca90c422c750a5db37965d174658fe46d67f58ef2bda192de468aafb5653e0931a1c5fbd7927abd80506243defd39a4af26496185460e71595
+Accept :
+text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+X-Requested-With :
+com.tencent.mm
+User-Agent :
+Mozilla/5.0 (Linux; U; Android 4.2.2; zh-cn; SCH-I919U Build/JDQ39E) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30 MicroMessenger/6.6.5.1280(0x26060533) NetType/WIFI Language/zh_CN
+Accept-Encoding :
+gzip,deflate
+Accept-Language :
+zh-CN, en-US
+Accept-Charset :
+utf-8, iso-8859-1, utf-16, *;q=0.7
+Cookie :
+rewardsn=; wxuin=3678518974; devicetype=android-17; version=26060533; lang=zh_CN; pass_ticket=DibB1nDpBpGg/rL82fN4vz+NY/uC/1910CUFLVhLppUjoOAsdaFU40/8/c6eU003; wap_sid2=CL79htoNElwwLXFDSWVuZ0JlbzhPdTFMUklqb3BtaGxfbzhPSkY1Tl9haUhEM255RWNMLVhPWWpROEZqM3hidldHZndQWXFmVHlveklMUEFzM25MUVpzS3lIajIzTFlEQUFBfjCcg4LWBTgNQAE=; wxtokenkey=777

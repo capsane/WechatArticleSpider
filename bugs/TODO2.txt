@@ -1,0 +1,619 @@
+Microsoft Windows [版本 10.0.16299.371]
+(c) 2017 Microsoft Corporation。保留所有权利。
+
+(venv) F:\PycharmProjects\server>python server.py 6210
+import tools: Queue和MongoDB初始化
+new a MongoDB.
+连接到数据库 wechat
+Initial TotalAccount List size: 597
+Server is running...
+http://0.0.0.0:6210/
+Server: receive get from history_next for js...
+AccountQueue size after get: 1
+127.0.0.1:10129 - - [12/Apr/2018 23:38:52] "HTTP/1.1 GET /history_next" - 200 OK
+Server: receive post of recent_article...
+处理历史文章：HUGO, 推送数量：10, 更多:  '1' , 订阅:  "1"
+2018-04-12 22:36:48    文章idx:  dict_keys([1, 2])
+Queue size after put:  1 1 那个整成迪丽热巴的女孩后来怎么样了？
+Queue size after put:  2 2 看完我妈拍的春游照片，我跟我爸都哭了
+2018-04-11 23:00:02    文章idx:  dict_keys([1, 2, 3])
+Queue size after put:  3 3 张靓颖“离婚”：你妈都看不上的男人就别嫁了
+Queue size after put:  4 4 “2000块的包包，也值得发朋友圈？”
+Queue size after put:  5 5 马云背后的女人“辞职”：从月薪500到身家400亿，她留下2条职场潜规则
+Ignore this day 1522855824 : none type:49 message...
+127.0.0.1:10130 - - [12/Apr/2018 23:38:52] "HTTP/1.1 POST /recent" - 200 OK
+Server: receive get from history_next for js...
+AccountQueue size after get: 0
+127.0.0.1:10148 - - [12/Apr/2018 23:38:59] "HTTP/1.1 GET /history_next" - 200 OK
+Server: receive post of recent_article...
+处理历史文章：意林, 推送数量：10, 更多:  '0' , 订阅:  "0"
+2018-04-12 18:22:09    文章idx:  dict_keys([1, 2, 3, 4, 5])
+Queue size after put:  6 6 这才是朋友圈最高级的狗粮：谢谢你如此爱我
+Queue size after put:  7 7 张靓颖和冯轲被曝离婚？她爱的其实是这个
+Queue size after put:  8 8 据说这是情侣在一起时要做的几件事，来感受下恋爱的气息！
+Queue size after put:  9 9 看完这个视频，感觉“起床困难症”终于有救了！
+Queue size after put:  10 10 现在聊天太可怕了，一不小心就掉进别人的套路里
+2018-04-11 17:30:00    文章idx:  dict_keys([1, 2, 3, 4, 5])
+Queue size after put:  11 11 体重多少的女生最容易脱单？
+Queue size after put:  12 12 知乎30个“一句话一万赞”的回答，句句戳心！
+Queue size after put:  13 13 敢不敢测一下你潜意识里的理想型是什么样的？
+Queue size after put:  14 14 单身女生都会懂的九大特点……
+Queue size after put:  15 15 组图：全都是幻觉，吓不倒我的！
+127.0.0.1:10149 - - [12/Apr/2018 23:38:59] "HTTP/1.1 POST /recent" - 200 OK
+Server: receive get from history_next for js...
+AccountQueue is empty, pop the first article url ...
+ArticleUrlQueue size after First get: 14
+127.0.0.1:10169 - - [12/Apr/2018 23:39:05] "HTTP/1.1 GET /history_next" - 200 OK
+Server: receive post of recent_article...
+处理历史文章：鲤伴, 推送数量：10, 更多:  '0' , 订阅:  "0"
+2018-04-12 21:17:10    文章idx:  dict_keys([1, 2, 3])
+Queue size after put:  16 15 “心软和不好意思，真的会杀死自己”
+Queue size after put:  17 16 远离你身边格局小的“穷人”
+Queue size after put:  18 17 这支“网红洗面奶”刷爆朋友圈，60秒让你彻底爱上洗脸！
+2018-04-11 21:25:14    文章idx:  dict_keys([1, 2, 3])
+Queue size after put:  19 18 陈奕迅一首新歌唱哭所有人：原来，有些人只适合遇见
+Queue size after put:  20 19 余生，和能让你温柔的人在一起
+Queue size after put:  21 20 2018女性标准身材表
+127.0.0.1:10170 - - [12/Apr/2018 23:39:05] "HTTP/1.1 POST /recent" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 20
+ArticleUrlQueue size after get: 19
+127.0.0.1:10186 - - [12/Apr/2018 23:39:13] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: 那个整成迪丽热巴的女孩后来怎么样了？
+回 复 约 吗 送 你 一 个 特 别 推 送迪丽热巴最近好火啊，连果姐都觉得好看，这种就属于老天爷赏饭吃，所以我朋友
+127.0.0.1:10187 - - [12/Apr/2018 23:39:13] "HTTP/1.1 POST /detail" - 200 OK
+Server: 3 receive post of read_like num...
+read: 100001, like: 3241
+准备入库: Title: 那个整成迪丽热巴的女孩后来怎么样了？
+回 复 约 吗 送 你 一 个 特 别 推 送迪丽热巴最近好火啊，连果姐都觉得好看，这种就属于老天爷赏饭吃，所以我朋友
+wechat update:
+127.0.0.1:10197 - - [12/Apr/2018 23:39:14] "HTTP/1.1 POST /num" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 19
+ArticleUrlQueue size after get: 18
+127.0.0.1:10219 - - [12/Apr/2018 23:39:21] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: 看完我妈拍的春游照片，我跟我爸都哭了
+回 复 约 吗 送 你 一 个 特 别 推 送看着朋友圈里千篇一律的45度角、鼓脸颊、半嘟唇，果姐笑了，今天让你们见识
+127.0.0.1:10220 - - [12/Apr/2018 23:39:21] "HTTP/1.1 POST /detail" - 200 OK
+Server: 3 receive post of read_like num...
+read: 70146, like: 299
+准备入库: Title: 看完我妈拍的春游照片，我跟我爸都哭了
+回 复 约 吗 送 你 一 个 特 别 推 送看着朋友圈里千篇一律的45度角、鼓脸颊、半嘟唇，果姐笑了，今天让你们见识
+wechat update:
+127.0.0.1:10230 - - [12/Apr/2018 23:39:22] "HTTP/1.1 POST /num" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 18
+ArticleUrlQueue size after get: 17
+127.0.0.1:10243 - - [12/Apr/2018 23:39:28] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: 张靓颖“离婚”：你妈都看不上的男人就别嫁了
+回 复 约 吗 送 你 一 个 特 别 推 送有人问果姐，我妈反对我和男朋友结婚怎么办？这种问题放在电视剧里一定是男女
+127.0.0.1:10244 - - [12/Apr/2018 23:39:28] "HTTP/1.1 POST /detail" - 200 OK
+Server: 3 receive post of read_like num...
+read: 100001, like: 5400
+准备入库: Title: 张靓颖“离婚”：你妈都看不上的男人就别嫁了
+回 复 约 吗 送 你 一 个 特 别 推 送有人问果姐，我妈反对我和男朋友结婚怎么办？这种问题放在电视剧里一定是男女
+wechat update:
+127.0.0.1:10263 - - [12/Apr/2018 23:39:29] "HTTP/1.1 POST /num" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 17
+ArticleUrlQueue size after get: 16
+127.0.0.1:10282 - - [12/Apr/2018 23:39:36] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: “2000块的包包，也值得发朋友圈？”
+回 复 约 吗 送 你 一 个 特 别 推 送果姐问你们，你们的朋友圈有没有那种，只要你发个朋友圈就在下面发表类似“美
+127.0.0.1:10283 - - [12/Apr/2018 23:39:36] "HTTP/1.1 POST /detail" - 200 OK
+Server: 3 receive post of read_like num...
+read: 100001, like: 1891
+准备入库: Title: “2000块的包包，也值得发朋友圈？”
+回 复 约 吗 送 你 一 个 特 别 推 送果姐问你们，你们的朋友圈有没有那种，只要你发个朋友圈就在下面发表类似“美
+wechat update:
+127.0.0.1:10287 - - [12/Apr/2018 23:39:37] "HTTP/1.1 POST /num" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 16
+ArticleUrlQueue size after get: 15
+127.0.0.1:10301 - - [12/Apr/2018 23:39:43] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: 马云背后的女人“辞职”：从月薪500到身家400亿，她留下2条职场潜规则
+回 复 约 吗 送 你 一 个 特 别 推 送每一个成功的男人背后果然有一个牛逼的女人，果姐真的太服气这个女人，真的，
+127.0.0.1:10302 - - [12/Apr/2018 23:39:43] "HTTP/1.1 POST /detail" - 200 OK
+Server: 3 receive post of read_like num...
+read: 100001, like: 1938
+准备入库: Title: 马云背后的女人“辞职”：从月薪500到身家400亿，她留下2条职场潜规则
+回 复 约 吗 送 你 一 个 特 别 推 送每一个成功的男人背后果然有一个牛逼的女人，果姐真的太服气这个女人，真的，
+wechat update:
+127.0.0.1:10313 - - [12/Apr/2018 23:39:44] "HTTP/1.1 POST /num" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 15
+ArticleUrlQueue size after get: 14
+127.0.0.1:10325 - - [12/Apr/2018 23:39:51] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: 这才是朋友圈最高级的狗粮：谢谢你如此爱我
+ 来源： 少女兔（ID：iiilass）“我可能忘记回家的路，但永远忘不掉找你的路；我可能忘记所有人，唯独对你的记忆刻
+127.0.0.1:10326 - - [12/Apr/2018 23:39:51] "HTTP/1.1 POST /detail" - 200 OK
+Server: 3 receive post of read_like num...
+read: 89175, like: 794
+准备入库: Title: 这才是朋友圈最高级的狗粮：谢谢你如此爱我
+ 来源： 少女兔（ID：iiilass）“我可能忘记回家的路，但永远忘不掉找你的路；我可能忘记所有人，唯独对你的记忆刻
+wechat update:
+127.0.0.1:10337 - - [12/Apr/2018 23:39:52] "HTTP/1.1 POST /num" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 14
+ArticleUrlQueue size after get: 13
+127.0.0.1:10349 - - [12/Apr/2018 23:39:58] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: 张靓颖和冯轲被曝离婚？她爱的其实是这个
+来源：桌子的生活观（ID：zzdshg）最近张靓颖疑似离婚的事情闹得沸沸扬扬，我对这八卦没有多少兴趣，今天我很想和大家
+127.0.0.1:10350 - - [12/Apr/2018 23:39:58] "HTTP/1.1 POST /detail" - 200 OK
+Server: 3 receive post of read_like num...
+read: 26267, like: 222
+准备入库: Title: 张靓颖和冯轲被曝离婚？她爱的其实是这个
+来源：桌子的生活观（ID：zzdshg）最近张靓颖疑似离婚的事情闹得沸沸扬扬，我对这八卦没有多少兴趣，今天我很想和大家
+wechat update:
+127.0.0.1:10364 - - [12/Apr/2018 23:40:00] "HTTP/1.1 POST /num" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 13
+ArticleUrlQueue size after get: 12
+127.0.0.1:10376 - - [12/Apr/2018 23:40:06] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: 据说这是情侣在一起时要做的几件事，来感受下恋爱的气息！
+来源：不正常人类研究中心（id:hahabzc）我喜欢你，不是因为你为我做的事，而是在一起时，我们一起做的事。情侣之间
+127.0.0.1:10377 - - [12/Apr/2018 23:40:06] "HTTP/1.1 POST /detail" - 200 OK
+Server: 3 receive post of read_like num...
+read: 16905, like: 164
+准备入库: Title: 据说这是情侣在一起时要做的几件事，来感受下恋爱的气息！
+来源：不正常人类研究中心（id:hahabzc）我喜欢你，不是因为你为我做的事，而是在一起时，我们一起做的事。情侣之间
+wechat update:
+127.0.0.1:10387 - - [12/Apr/2018 23:40:07] "HTTP/1.1 POST /num" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 12
+ArticleUrlQueue size after get: 11
+127.0.0.1:10408 - - [12/Apr/2018 23:40:13] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: 看完这个视频，感觉“起床困难症”终于有救了！
+来源：不正常人类研究中心（id:hahabzc）为了明天能按时起床，鬼知道我都经历了什么......点击图片，立即订购
+127.0.0.1:10409 - - [12/Apr/2018 23:40:13] "HTTP/1.1 POST /detail" - 200 OK
+Server: 3 receive post of read_like num...
+read: 13865, like: 86
+准备入库: Title: 看完这个视频，感觉“起床困难症”终于有救了！
+来源：不正常人类研究中心（id:hahabzc）为了明天能按时起床，鬼知道我都经历了什么......点击图片，立即订购
+wechat update:
+127.0.0.1:10426 - - [12/Apr/2018 23:40:14] "HTTP/1.1 POST /num" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 11
+ArticleUrlQueue size after get: 10
+127.0.0.1:10442 - - [12/Apr/2018 23:40:20] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: 现在聊天太可怕了，一不小心就掉进别人的套路里
+来源：网络真是奇妙不是吗？今日好物推荐↙点原文链接，学习更多论语知识！
+
+127.0.0.1:10443 - - [12/Apr/2018 23:40:20] "HTTP/1.1 POST /detail" - 200 OK
+Server: 3 receive post of read_like num...
+read: 24904, like: 257
+准备入库: Title: 现在聊天太可怕了，一不小心就掉进别人的套路里
+来源：网络真是奇妙不是吗？今日好物推荐↙点原文链接，学习更多论语知识！
+
+wechat insert...
+127.0.0.1:10454 - - [12/Apr/2018 23:40:21] "HTTP/1.1 POST /num" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 10
+ArticleUrlQueue size after get: 9
+127.0.0.1:10465 - - [12/Apr/2018 23:40:28] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: 体重多少的女生最容易脱单？
+来源：二更食堂（ID：shenyeshitang521）“你是一个非常善良的人，美好的人，那你的美好不应该仅仅局限于你
+127.0.0.1:10466 - - [12/Apr/2018 23:40:28] "HTTP/1.1 POST /detail" - 200 OK
+Server: 3 receive post of read_like num...
+read: 79137, like: 357
+准备入库: Title: 体重多少的女生最容易脱单？
+来源：二更食堂（ID：shenyeshitang521）“你是一个非常善良的人，美好的人，那你的美好不应该仅仅局限于你
+wechat update:
+127.0.0.1:10475 - - [12/Apr/2018 23:40:29] "HTTP/1.1 POST /num" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 9
+ArticleUrlQueue size after get: 8
+127.0.0.1:10486 - - [12/Apr/2018 23:40:35] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: 知乎30个“一句话一万赞”的回答，句句戳心！
+来源：知乎命运是什么？命是弱者借口，运乃强者谦词。@邓亚圣如果好人没好报，为什么我们还要做好人？我们坚持一件事情，并不
+127.0.0.1:10487 - - [12/Apr/2018 23:40:35] "HTTP/1.1 POST /detail" - 200 OK
+Server: 3 receive post of read_like num...
+read: 33889, like: 515
+准备入库: Title: 知乎30个“一句话一万赞”的回答，句句戳心！
+来源：知乎命运是什么？命是弱者借口，运乃强者谦词。@邓亚圣如果好人没好报，为什么我们还要做好人？我们坚持一件事情，并不
+wechat update:
+127.0.0.1:10490 - - [12/Apr/2018 23:40:36] "HTTP/1.1 POST /num" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 8
+ArticleUrlQueue size after get: 7
+127.0.0.1:10503 - - [12/Apr/2018 23:40:42] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: 敢不敢测一下你潜意识里的理想型是什么样的？
+来源：冷笑话精选（id:lengiii）据说小时候第一个喜欢的动漫人物居然就是你未来的理想型可以说是非常准了！▼期待你
+127.0.0.1:10504 - - [12/Apr/2018 23:40:42] "HTTP/1.1 POST /detail" - 200 OK
+Server: 3 receive post of read_like num...
+read: 28848, like: 117
+准备入库: Title: 敢不敢测一下你潜意识里的理想型是什么样的？
+来源：冷笑话精选（id:lengiii）据说小时候第一个喜欢的动漫人物居然就是你未来的理想型可以说是非常准了！▼期待你
+wechat update:
+127.0.0.1:10514 - - [12/Apr/2018 23:40:43] "HTTP/1.1 POST /num" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 7
+ArticleUrlQueue size after get: 6
+127.0.0.1:10530 - - [12/Apr/2018 23:40:49] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: 单身女生都会懂的九大特点……
+来源：不正常人类研究中心（id:hahabzc）点击图片，立即订购↙点 原文链接可进入意林微商城
+
+127.0.0.1:10531 - - [12/Apr/2018 23:40:50] "HTTP/1.1 POST /detail" - 200 OK
+Server: 3 receive post of read_like num...
+read: 21295, like: 169
+准备入库: Title: 单身女生都会懂的九大特点……
+来源：不正常人类研究中心（id:hahabzc）点击图片，立即订购↙点 原文链接可进入意林微商城
+
+wechat update:
+127.0.0.1:10538 - - [12/Apr/2018 23:40:51] "HTTP/1.1 POST /num" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 6
+ArticleUrlQueue size after get: 5
+127.0.0.1:10553 - - [12/Apr/2018 23:40:57] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: 组图：全都是幻觉，吓不倒我的！
+问题描述：
+Anyproxy中41.33和41.35收到了两个s?_biz
+Anyproxy中s?_biz和f=json之间间隔两秒，有点长，因为get(js)是同步的吗？f=json是在s?_biz返回200后才发送的吗
+实验一下，延迟s?_biz的发送，或者返回
+
+
+
+
+
+来源：大叔爱吐槽（id:dashuaitucao）现在有些人为了寻找幻觉而去嗑药，这是很傻的。因为生活中充满了各种幻觉
+127.0.0.1:10554 - - [12/Apr/2018 23:40:57] "HTTP/1.1 POST /detail" - 200 OK
+Server: 3 receive post of read_like num...
+read: 23669, like: 253
+准备入库: Title: 组图：全都是幻觉，吓不倒我的！
+来源：大叔爱吐槽（id:dashuaitucao）现在有些人为了寻找幻觉而去嗑药，这是很傻的。因为生活中充满了各种幻觉
+wechat insert...
+127.0.0.1:10564 - - [12/Apr/2018 23:40:58] "HTTP/1.1 POST /num" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 5
+ArticleUrlQueue size after get: 4
+127.0.0.1:10580 - - [12/Apr/2018 23:41:04] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: “心软和不好意思，真的会杀死自己”
+点击蓝色字体即可关注文 / 林熙  图 / 网络来源：林熙（ID:inks01）点上方绿标即可收听今天的鲤伴电台心软的
+127.0.0.1:10581 - - [12/Apr/2018 23:41:05] "HTTP/1.1 POST /detail" - 200 OK
+Server: 3 receive post of read_like num...
+read: 88406, like: 423
+准备入库: Title: “心软和不好意思，真的会杀死自己”
+点击蓝色字体即可关注文 / 林熙  图 / 网络来源：林熙（ID:inks01）点上方绿标即可收听今天的鲤伴电台心软的
+wechat insert...
+127.0.0.1:10584 - - [12/Apr/2018 23:41:06] "HTTP/1.1 POST /num" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 4
+ArticleUrlQueue size after get: 3
+127.0.0.1:10599 - - [12/Apr/2018 23:41:12] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: 远离你身边格局小的“穷人”
+点击蓝色字体即可关注文 / 小椰子  图 / 网络来源：精读（ID:Jingdu999)点上方绿标即可收听今天的鲤伴电
+127.0.0.1:10600 - - [12/Apr/2018 23:41:12] "HTTP/1.1 POST /detail" - 200 OK
+Server: 3 receive post of read_like num...
+read: 33363, like: 165
+准备入库: Title: 远离你身边格局小的“穷人”
+点击蓝色字体即可关注文 / 小椰子  图 / 网络来源：精读（ID:Jingdu999)点上方绿标即可收听今天的鲤伴电
+wechat insert...
+127.0.0.1:10605 - - [12/Apr/2018 23:41:13] "HTTP/1.1 POST /num" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 3
+ArticleUrlQueue size after get: 2
+127.0.0.1:10617 - - [12/Apr/2018 23:41:20] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: 这支“网红洗面奶”刷爆朋友圈，60秒让你彻底爱上洗脸！
+点击蓝色字体即可关注文 / yoyo  图 / 网络日本有位叫村嶋孟的老人，为了做一碗好米饭，坚持了50年。只要一洗米
+127.0.0.1:10618 - - [12/Apr/2018 23:41:20] "HTTP/1.1 POST /detail" - 200 OK
+Server: 3 receive post of read_like num...
+read: 13898, like: 20
+准备入库: Title: 这支“网红洗面奶”刷爆朋友圈，60秒让你彻底爱上洗脸！
+点击蓝色字体即可关注文 / yoyo  图 / 网络日本有位叫村嶋孟的老人，为了做一碗好米饭，坚持了50年。只要一洗米
+wechat insert...
+127.0.0.1:10625 - - [12/Apr/2018 23:41:21] "HTTP/1.1 POST /num" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 2
+ArticleUrlQueue size after get: 1
+127.0.0.1:10642 - - [12/Apr/2018 23:41:28] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: 陈奕迅一首新歌唱哭所有人：原来，有些人只适合遇见
+点击蓝色字体即可关注文 / 王狮狮  图 / 网络来源：一读（ID:iiiread）点上方绿标即可收听今天的鲤伴电台我
+127.0.0.1:10643 - - [12/Apr/2018 23:41:28] "HTTP/1.1 POST /detail" - 200 OK
+Server: 3 receive post of read_like num...
+read: 100001, like: 1148
+准备入库: Title: 陈奕迅一首新歌唱哭所有人：原来，有些人只适合遇见
+点击蓝色字体即可关注文 / 王狮狮  图 / 网络来源：一读（ID:iiiread）点上方绿标即可收听今天的鲤伴电台我
+wechat insert...
+127.0.0.1:10656 - - [12/Apr/2018 23:41:29] "HTTP/1.1 POST /num" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 1
+ArticleUrlQueue size after get: 0
+127.0.0.1:10671 - - [12/Apr/2018 23:41:35] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: 余生，和能让你温柔的人在一起
+点击蓝色字体即可关注文 / 树树  图 / 网络来源：七言先生（ID:mrqy88）点上方绿标即可收听今天的鲤伴电台一
+127.0.0.1:10672 - - [12/Apr/2018 23:41:35] "HTTP/1.1 POST /detail" - 200 OK
+Server: 3 receive post of read_like num...
+read: 56356, like: 257
+准备入库: Title: 余生，和能让你温柔的人在一起
+点击蓝色字体即可关注文 / 树树  图 / 网络来源：七言先生（ID:mrqy88）点上方绿标即可收听今天的鲤伴电台一
+wechat insert...
+127.0.0.1:10684 - - [12/Apr/2018 23:41:36] "HTTP/1.1 POST /num" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 0
+ArticleUrlQueue is empty
+Index: 2
+Index: 3
+127.0.0.1:10693 - - [12/Apr/2018 23:41:38] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: 2018女性标准身材表
+点击蓝色字体即可关注文 / 树树  图 / 网络来源：七言先生（ID:mrqy88）点上方绿标即可收听今天的鲤伴电台一
+127.0.0.1:10694 - - [12/Apr/2018 23:41:38] "HTTP/1.1 POST /detail" - 200 OK
+Server: 1 receive get from article_next for js...
+Server: 1 receive get from article_next for js...
+Server: receive get from history_next for js...
+AccountQueue size after get: 0
+127.0.0.1:10738 - - [12/Apr/2018 23:46:04] "HTTP/1.1 GET /history_next" - 200 OK
+Server: receive post of recent_article...
+处理历史文章：HUGO, 推送数量：10, 更多:  '1' , 订阅:  "1"
+2018-04-12 22:36:48    文章idx:  dict_keys([1, 2])
+Queue size after put:  1 1 那个整成迪丽热巴的女孩后来怎么样了？
+RealArticle size after get: 0
+Queue size after put:  1 2 看完我妈拍的春游照片，我跟我爸都哭了
+RealArticle size after get: 0
+ArticleUrlQueue size after get: 1
+2018-04-11 23:00:02    文章idx:  dict_keys([1, 2, 3])
+127.0.0.1:10699 - - [12/Apr/2018 23:46:04] "HTTP/1.1 GET /article_next" - 200 OK
+ArticleUrlQueue size after get: 0
+127.0.0.1:10710 - - [12/Apr/2018 23:46:04] "HTTP/1.1 GET /article_next" - 200 OK
+Queue size after put:  1 1 张靓颖“离婚”：你妈都看不上的男人就别嫁了
+Queue size after put:  2 2 “2000块的包包，也值得发朋友圈？”
+Queue size after put:  3 3 马云背后的女人“辞职”：从月薪500到身家400亿，她留下2条职场潜规则
+Ignore this day 1522855824 : none type:49 message...
+127.0.0.1:10739 - - [12/Apr/2018 23:46:04] "HTTP/1.1 POST /recent" - 200 OK
+Server: receive get from history_next for js...
+AccountQueue is empty, pop the first article url ...
+ArticleUrlQueue size after First get: 2
+127.0.0.1:10755 - - [12/Apr/2018 23:46:11] "HTTP/1.1 GET /history_next" - 200 OK
+Server: receive post of recent_article...
+处理历史文章：朱门大叔, 推送数量：10, 更多:  '0' , 订阅:  "0"
+2018-04-12 21:00:00    文章idx:  dict_keys([1, 2, 3, 4, 5, 6])
+Queue size after put:  4 3 精致的女孩都在哪种地方睡过觉？
+Queue size after put:  5 4 张靓颖被曝离婚：你妈都看不上的男人就别嫁了
+Queue size after put:  6 5 有这四种感觉，你就遇到对的人了
+Queue size after put:  7 6 第一批中年少女的日常曝光，哈哈哈哈哈哈哈哈哈哈是我本人了！！
+Queue size after put:  8 7 新婚姻法保障什么不保障什么：无论已婚未婚，每一个女生都应该认真仔细当合同一样学习！
+Queue size after put:  9 8 如何判断一个人喜不喜欢你？
+2018-04-11 21:00:00    文章idx:  dict_keys([1, 2, 3, 4, 5, 6])
+Queue size after put:  10 9 我和抖音上97年的小奶狗结婚了
+Queue size after put:  11 10 微信新功能：千万别错过喜欢的人
+Queue size after put:  12 11 “嫁到我家来，你真享福了！”听完老公一番话，女人泪流满面……
+Queue size after put:  13 12 2018女性标准身材表
+Queue size after put:  14 13 那些野、浪、贱的姑娘，为什么活得比你好？
+Queue size after put:  15 14 做我对象的标准
+127.0.0.1:10756 - - [12/Apr/2018 23:46:12] "HTTP/1.1 POST /recent" - 200 OK
+Server: 3 receive post of read_like num...
+read: 100001, like: 5400
+++++++++++++++++++++++ read, like之后，文章内容为空， sleep 1s???+++++++++++++++++++++++++++++
+-------------------------------------content依然为空-----------------------------------------------
+准备入库: Title: 看完我妈拍的春游照片，我跟我爸都哭了
+wechat update:
+127.0.0.1:10792 - - [12/Apr/2018 23:46:18] "HTTP/1.1 POST /num" - 200 OK
+Server: 3 receive post of read_like num...
+read: 100001, like: 1897
+++++++++++++++++++++++ read, like之后，文章内容为空， sleep 1s???+++++++++++++++++++++++++++++
+-------------------------------------content依然为空-----------------------------------------------
+准备入库: Title: 看完我妈拍的春游照片，我跟我爸都哭了
+wechat update:
+127.0.0.1:10810 - - [12/Apr/2018 23:46:23] "HTTP/1.1 POST /num" - 200 OK
+Server: 3 receive post of read_like num...
+read: 100001, like: 1941
+++++++++++++++++++++++ read, like之后，文章内容为空， sleep 1s???+++++++++++++++++++++++++++++
+-------------------------------------content依然为空-----------------------------------------------
+准备入库: Title: 看完我妈拍的春游照片，我跟我爸都哭了
+wechat update:
+127.0.0.1:10830 - - [12/Apr/2018 23:46:29] "HTTP/1.1 POST /num" - 200 OK
+Server: 3 receive post of read_like num...
+read: 89821, like: 802
+++++++++++++++++++++++ read, like之后，文章内容为空， sleep 1s???+++++++++++++++++++++++++++++
+-------------------------------------content依然为空-----------------------------------------------
+准备入库: Title: 看完我妈拍的春游照片，我跟我爸都哭了
+wechat update:
+127.0.0.1:10840 - - [12/Apr/2018 23:46:34] "HTTP/1.1 POST /num" - 200 OK
+Server: 3 receive post of read_like num...
+read: 26413, like: 223
+++++++++++++++++++++++ read, like之后，文章内容为空， sleep 1s???+++++++++++++++++++++++++++++
+-------------------------------------content依然为空-----------------------------------------------
+准备入库: Title: 看完我妈拍的春游照片，我跟我爸都哭了
+wechat update:
+127.0.0.1:10873 - - [12/Apr/2018 23:46:40] "HTTP/1.1 POST /num" - 200 OK
+Server: 3 receive post of read_like num...
+read: 17039, like: 166
+++++++++++++++++++++++ read, like之后，文章内容为空， sleep 1s???+++++++++++++++++++++++++++++
+-------------------------------------content依然为空-----------------------------------------------
+准备入库: Title: 看完我妈拍的春游照片，我跟我爸都哭了
+wechat update:
+127.0.0.1:10891 - - [12/Apr/2018 23:46:45] "HTTP/1.1 POST /num" - 200 OK
+Server: 3 receive post of read_like num...
+read: 13991, like: 86
+++++++++++++++++++++++ read, like之后，文章内容为空， sleep 1s???+++++++++++++++++++++++++++++
+-------------------------------------content依然为空-----------------------------------------------
+准备入库: Title: 看完我妈拍的春游照片，我跟我爸都哭了
+wechat update:
+127.0.0.1:10918 - - [12/Apr/2018 23:46:51] "HTTP/1.1 POST /num" - 200 OK
+Server: 3 receive post of read_like num...
+read: 25085, like: 259
+++++++++++++++++++++++ read, like之后，文章内容为空， sleep 1s???+++++++++++++++++++++++++++++
+-------------------------------------content依然为空-----------------------------------------------
+准备入库: Title: 看完我妈拍的春游照片，我跟我爸都哭了
+wechat update:
+127.0.0.1:10939 - - [12/Apr/2018 23:46:56] "HTTP/1.1 POST /num" - 200 OK
+Server: 3 receive post of read_like num...
+read: 79172, like: 357
+++++++++++++++++++++++ read, like之后，文章内容为空， sleep 1s???+++++++++++++++++++++++++++++
+-------------------------------------content依然为空-----------------------------------------------
+准备入库: Title: 看完我妈拍的春游照片，我跟我爸都哭了
+wechat update:
+127.0.0.1:10958 - - [12/Apr/2018 23:47:02] "HTTP/1.1 POST /num" - 200 OK
+Server: 3 receive post of read_like num...
+read: 33926, like: 515
+++++++++++++++++++++++ read, like之后，文章内容为空， sleep 1s???+++++++++++++++++++++++++++++
+-------------------------------------content依然为空-----------------------------------------------
+准备入库: Title: 看完我妈拍的春游照片，我跟我爸都哭了
+wechat update:
+127.0.0.1:10970 - - [12/Apr/2018 23:47:07] "HTTP/1.1 POST /num" - 200 OK
+Server: 3 receive post of read_like num...
+read: 28879, like: 118
+++++++++++++++++++++++ read, like之后，文章内容为空， sleep 1s???+++++++++++++++++++++++++++++
+-------------------------------------content依然为空-----------------------------------------------
+准备入库: Title: 看完我妈拍的春游照片，我跟我爸都哭了
+wechat update:
+127.0.0.1:10987 - - [12/Apr/2018 23:47:13] "HTTP/1.1 POST /num" - 200 OK
+Server: 3 receive post of read_like num...
+read: 21318, like: 170
+++++++++++++++++++++++ read, like之后，文章内容为空， sleep 1s???+++++++++++++++++++++++++++++
+-------------------------------------content依然为空-----------------------------------------------
+准备入库: Title: 看完我妈拍的春游照片，我跟我爸都哭了
+wechat update:
+127.0.0.1:11013 - - [12/Apr/2018 23:47:18] "HTTP/1.1 POST /num" - 200 OK
+Server: 3 receive post of read_like num...
+read: 23693, like: 254
+++++++++++++++++++++++ read, like之后，文章内容为空， sleep 1s???+++++++++++++++++++++++++++++
+-------------------------------------content依然为空-----------------------------------------------
+准备入库: Title: 看完我妈拍的春游照片，我跟我爸都哭了
+wechat update:
+127.0.0.1:11037 - - [12/Apr/2018 23:47:23] "HTTP/1.1 POST /num" - 200 OK
+Server: 3 receive post of read_like num...
+read: 89652, like: 428
+++++++++++++++++++++++ read, like之后，文章内容为空， sleep 1s???+++++++++++++++++++++++++++++
+-------------------------------------content依然为空-----------------------------------------------
+准备入库: Title: 看完我妈拍的春游照片，我跟我爸都哭了
+wechat update:
+127.0.0.1:11051 - - [12/Apr/2018 23:47:29] "HTTP/1.1 POST /num" - 200 OK
+Server: 3 receive post of read_like num...
+read: 33939, like: 170
+++++++++++++++++++++++ read, like之后，文章内容为空， sleep 1s???+++++++++++++++++++++++++++++
+-------------------------------------content依然为空-----------------------------------------------
+准备入库: Title: 看完我妈拍的春游照片，我跟我爸都哭了
+wechat update:
+127.0.0.1:11066 - - [12/Apr/2018 23:47:34] "HTTP/1.1 POST /num" - 200 OK
+Server: 3 receive post of read_like num...
+read: 14076, like: 20
+++++++++++++++++++++++ read, like之后，文章内容为空， sleep 1s???+++++++++++++++++++++++++++++
+-------------------------------------content依然为空-----------------------------------------------
+准备入库: Title: 看完我妈拍的春游照片，我跟我爸都哭了
+wechat update:
+127.0.0.1:11077 - - [12/Apr/2018 23:47:40] "HTTP/1.1 POST /num" - 200 OK
+Server: 3 receive post of read_like num...
+read: 100001, like: 1150
+++++++++++++++++++++++ read, like之后，文章内容为空， sleep 1s???+++++++++++++++++++++++++++++
+-------------------------------------content依然为空-----------------------------------------------
+准备入库: Title: 看完我妈拍的春游照片，我跟我爸都哭了
+wechat update:
+127.0.0.1:11101 - - [12/Apr/2018 23:47:45] "HTTP/1.1 POST /num" - 200 OK
+Server: 3 receive post of read_like num...
+read: 56511, like: 257
+++++++++++++++++++++++ read, like之后，文章内容为空， sleep 1s???+++++++++++++++++++++++++++++
+-------------------------------------content依然为空-----------------------------------------------
+准备入库: Title: 看完我妈拍的春游照片，我跟我爸都哭了
+wechat update:
+127.0.0.1:11125 - - [12/Apr/2018 23:47:50] "HTTP/1.1 POST /num" - 200 OK
+Server: receive get from history_next for js...
+AccountQueue is empty, pop the first article url ...
+ArticleUrlQueue size after First get: 13
+127.0.0.1:11131 - - [12/Apr/2018 23:47:57] "HTTP/1.1 GET /history_next" - 200 OK
+Server: receive post of recent_article...
+处理历史文章：读书有范, 推送数量：10, 更多:  '0' , 订阅:  "0"
+2018-04-12 06:00:00    文章idx:  dict_keys([1, 2, 3, 4, 5, 6, 7, 8])
+Queue size after put:  16 14 余生，就要这样活
+Queue size after put:  17 15 刘强东圈内大佬饭局曝光：哪个瞬间让你觉得读书有用？
+Queue size after put:  18 16 “嫁到我家来，你真享福了！”听完老公一番话，女人泪流满面……
+Queue size after put:  19 17 体重90斤与120斤，幸福感差的不是一点点
+Queue size after put:  20 18 做人，一定要说话算数
+Queue size after put:  21 19 九言 | 管好自己的嘴，恶语伤人六月寒。
+Queue size after put:  22 20 介绍一下我的对象
+Queue size after put:  23 21 Apr.12 | 早起思考一段话
+2018-04-11 06:00:00    文章idx:  dict_keys([1, 2, 3, 4, 5, 6, 7, 8])
+Queue size after put:  24 22 惜命最好的方式不是养生，而是管理情绪！
+Queue size after put:  25 23 余生，和能让着你的人在一起
+Queue size after put:  26 24 女人，胖点才更好！
+Queue size after put:  27 25 男人什么情况下为小三离婚
+Queue size after put:  28 26 高情商的12个表现，你占了几个？
+Queue size after put:  29 27 九言 | 不求是贵，少病是寿，够用是富，无欲是福，感激是喜。
+Queue size after put:  30 28 千万别去重庆！否则……哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+Queue size after put:  31 29 Apr.11 | 早起思考一段话
+127.0.0.1:11132 - - [12/Apr/2018 23:47:57] "HTTP/1.1 POST /recent" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 30
+ArticleUrlQueue size after get: 28
+127.0.0.1:11150 - - [12/Apr/2018 23:48:04] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: 张靓颖“离婚”：你妈都看不上的男人就别嫁了
+回 复 约 吗 送 你 一 个 特 别 推 送果姐问你们，你们的朋友圈有没有那种，只要你发个朋友圈就在下面发表类似“美
+127.0.0.1:11151 - - [12/Apr/2018 23:48:04] "HTTP/1.1 POST /detail" - 200 OK
+Server: 3 receive post of read_like num...
+read: 100001, like: 1898
+准备入库: Title: 张靓颖“离婚”：你妈都看不上的男人就别嫁了
+回 复 约 吗 送 你 一 个 特 别 推 送果姐问你们，你们的朋友圈有没有那种，只要你发个朋友圈就在下面发表类似“美
+wechat update:
+127.0.0.1:11155 - - [12/Apr/2018 23:48:05] "HTTP/1.1 POST /num" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 29
+ArticleUrlQueue size after get: 27
+127.0.0.1:11167 - - [12/Apr/2018 23:48:12] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: “2000块的包包，也值得发朋友圈？”
+回 复 约 吗 送 你 一 个 特 别 推 送每一个成功的男人背后果然有一个牛逼的女人，果姐真的太服气这个女人，真的，
+127.0.0.1:11168 - - [12/Apr/2018 23:48:12] "HTTP/1.1 POST /detail" - 200 OK
+Server: 3 receive post of read_like num...
+read: 100001, like: 1941
+准备入库: Title: “2000块的包包，也值得发朋友圈？”
+回 复 约 吗 送 你 一 个 特 别 推 送每一个成功的男人背后果然有一个牛逼的女人，果姐真的太服气这个女人，真的，
+wechat update:
+127.0.0.1:11175 - - [12/Apr/2018 23:48:13] "HTTP/1.1 POST /num" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 28
+ArticleUrlQueue size after get: 26
+127.0.0.1:11187 - - [12/Apr/2018 23:48:19] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: 马云背后的女人“辞职”：从月薪500到身家400亿，她留下2条职场潜规则
+点击上方蓝字关注「朱门大叔」每晚九点推送  回复「晚安」 大叔送你一句特别的话点上方绿标即可收听今天的晚安曲文 | 路
+127.0.0.1:11188 - - [12/Apr/2018 23:48:19] "HTTP/1.1 POST /detail" - 200 OK
+Server: 3 receive post of read_like num...
+read: 82776, like: 109
+准备入库: Title: 马云背后的女人“辞职”：从月薪500到身家400亿，她留下2条职场潜规则
+点击上方蓝字关注「朱门大叔」每晚九点推送  回复「晚安」 大叔送你一句特别的话点上方绿标即可收听今天的晚安曲文 | 路
+wechat update:
+127.0.0.1:11208 - - [12/Apr/2018 23:48:20] "HTTP/1.1 POST /num" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 27
+ArticleUrlQueue size after get: 25
+127.0.0.1:11223 - - [12/Apr/2018 23:48:26] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: 精致的女孩都在哪种地方睡过觉？
+点击上方蓝字关注「朱门大叔」每晚九点推送  回复「晚安」 大叔送你一句特别的话点上方绿标即可收听今天的晚安曲文 | 小
+127.0.0.1:11224 - - [12/Apr/2018 23:48:26] "HTTP/1.1 POST /detail" - 200 OK
+Server: 3 receive post of read_like num...
+read: 34181, like: 200
+准备入库: Title: 精致的女孩都在哪种地方睡过觉？
+点击上方蓝字关注「朱门大叔」每晚九点推送  回复「晚安」 大叔送你一句特别的话点上方绿标即可收听今天的晚安曲文 | 小
+wechat insert...
+127.0.0.1:11250 - - [12/Apr/2018 23:48:28] "HTTP/1.1 POST /num" - 200 OK
+Server: 1 receive get from article_next for js...
+RealArticle size after get: 26
+ArticleUrlQueue size after get: 24
+127.0.0.1:11276 - - [12/Apr/2018 23:48:35] "HTTP/1.1 GET /article_next" - 200 OK
+Server: 2 receive post of article_detail...
+提取到的content: 张靓颖被曝离婚：你妈都看不上的男人就别嫁了
+点击上方蓝字关注「朱门大叔」每晚九点推送  回复「晚安」 大叔送你一句特别的话点上方绿标即可收听今天的晚安曲文 | 夕
+127.0.0.1:11277 - - [12/Apr/2018 23:48:35] "HTTP/1.1 POST /detail" - 200 OK
+

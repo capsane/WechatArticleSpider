@@ -1,0 +1,5 @@
+1、s?_biz: 只有在返回200后，微信客户端才会发送f=json请求，
+2、如果s?_biz没有及时响应，微信客户端可能会重发，5s应该，但并不是
+
+get(js)和post(content)可能是由sync-request保证的，我自己也没做处理：Server1： ->   Server2:
+post(content)和post(num)可能也是保证好的，因为只有在1的res返回后，2的req才会发出。只是不知道Anyproxy是否是等Webpy返回响应之后才结束
