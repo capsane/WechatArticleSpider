@@ -1,37 +1,19 @@
-from mongodb import MongoDB
-from queue import Queue
-from get_biz import read_lines_from_file
+def get_param(url, key):
+    if url == '':
+        return None
+    params = url.split('?')[-1].split('&')
+    for param in params:
+        key_value = param.split('=', 1)
+        if key == key_value[0]:
+            return key_value[1]
+    return None
 
 
-def init_account_queue():
-    # 新氧，唐唐，十点读书，新华社
-    # AccountQueue.put("MjM5OTIwNjQxNw==")
-    # AccountQueue.put("MjM5OTIwODMzMQ==")
-    # AccountQueue.put("MjM5MDMyMzg2MA==")
-    # AccountQueue.put("MzA4NDI3NjcyNA==")
-    triples = read_lines_from_file("公众号result_pre.txt")
-    # biz,nickname,name
-    for line in triples:
-        biz_name = line.split(',')
-        TotalAccount.append(biz_name)
-    print("Initial TotalAccount List size: %d" % len(TotalAccount))
-    # TODO:
-    for i in range(2):
-        AccountQueue.put(TotalAccount[i])
-
-
-# FIXME: 如何正确的初始化
-print("import tools: Queue和MongoDB初始化")
-
-TotalAccount = []
-AccountQueue = Queue()
-NextArticleUrlQueue = Queue()
-RealArticleQueue = Queue()
-mongodb = MongoDB()
-TempArticle = None
-INDEX = 1
-init_account_queue()
-
-
-
-
+def get_id(url):
+    url = url.replace('__', '')      # __biz替换为biz
+    biz = get_param(url, 'biz')
+    mid = get_param(url, 'mid')
+    idx = get_param(url, 'idx')
+    if not biz or not mid or not idx:
+        return None
+    return biz+':'+mid+':'+idx

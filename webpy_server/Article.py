@@ -18,6 +18,8 @@ class Article:
     content_url = ""    # 文章详情url，其中包含biz, index
     digest = ""         # 摘要
     copyright_stat = 0    # TODO:可能是：11表示原创
+    mid = ""
+    article_id = ""
 
     # 待提取
     subtype = 9
@@ -36,6 +38,8 @@ class Article:
         self.copyright_stat = 0
         self.digest = ""
         self.del_flag = 0  # 未知
+        self.mid = ""
+        self.article_id = ""
 
         if raw_dict:
             # 通过公众号历史文章传递
@@ -87,10 +91,23 @@ class Article:
     # JSON化，用于入库
     def json(self):
         return {
-            "biz": self.biz, "nickname": self.nickname, "idx": self.idx, "title": self.title, "author": self.author,
-            "type": self.type, "content_url": self.content_url, "digest": self.digest, "datetime": self.datetime,
-            "时间": self.standardtime, "read_num": self.read_num, "like_num": self.like_num, "del_flag": self.del_flag,
-            "content": self.content, "copyright_stat": self.copyright_stat
+            "biz": self.biz,
+            "nickname": self.nickname,
+            "idx": self.idx,
+            "title": self.title,
+            "author": self.author,
+            "type": self.type,
+            "content_url": self.content_url,
+            "digest": self.digest,
+            "datetime": self.datetime,
+            "时间": self.standardtime,
+            "read_num": self.read_num,
+            "like_num": self.like_num,
+            "del_flag": self.del_flag,
+            "content": self.content,
+            "copyright_stat": self.copyright_stat,
+            "mid": self.mid,
+            "article_id": self.article_id
         }
 
 

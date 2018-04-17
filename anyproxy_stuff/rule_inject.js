@@ -7,6 +7,8 @@ var request = require('sync-request');  // 同步get
 var request_json = require('request-json');   // 异步post
 var localPng = fs.readFileSync('/log/1.png');   // 所在盘绝对路径
 
+var urlplusbiz = ""
+
 
 module.exports = {
 
@@ -63,9 +65,9 @@ module.exports = {
    * @param {object} responseDetail
    */
   *beforeSendResponse(requestDetail, responseDetail) {
-    var pathname = url.parse(requestDetail.url).pathname;
-    // 只对hostname为mp.weixin.qq.com/的response进行处理
-    if (/mp\.weixin\.qq\.com\//i.test(requestDetail.url)) {
+    var host = require('url').parse(requestDetail.url).host;
+    // 只对hostname为mp.weixin.qq.com的response进行处理
+    if (/mp\.weixin\.qq\.com/i.test(host)) {
 
       try {
         var header = responseDetail.response.header;
@@ -74,6 +76,7 @@ module.exports = {
 
         // 历史文章列表
         if (/mp\/profile_ext\?action=home/i.test(requestDetail.url)) {
+          urlplusbiz = ""
           console.log(sd.format(new Date(), '--------------[YYYY-MM-DD HH:mm:ss]') + " 处理历史文章列表响应.......................................................");
           // 修改响应头
           responseDetail.response.header['content-type'] = 'text/html; charset=UTF-8';
@@ -92,7 +95,6 @@ module.exports = {
 
 
           // B. sync-request, GET返回的JS，同步
-
           var res = request('GET', 'http://localhost:6210/history_next');  // 阻塞
           var finalJS = res.getBody();
           console.log(sd.format(new Date(), '--------------[YYYY-MM-DD HH:mm:ss]') + " finalJS: " + finalJS);
@@ -124,12 +126,14 @@ module.exports = {
         else if (/\/s\?__biz=/i.test(requestDetail.url)) {
           console.log(sd.format(new Date(), '--------------[YYYY-MM-DD HH:mm:ss]') + " 处理文章内容响应:.............................................................");
           console.log("requestDetail.url: " + requestDetail.url);
-          // console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< May Be Error : change header <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 
           // A. sync-request, GET返回的JS，同步。Server会从文章队列中弹出当前url对应的文章
-          // console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< May Be Error : sync-request <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-          // TODO: 传递requestDetail.url参数
-          var res = request('GET', 'http://localhost:6210/article_next');
+          // var params = requestDetail.url.split('&');
+          // 提取biz
+          var biz = requestDetail.url.split("&mid")[0].split("?__")[1];
+          urlplusbiz = requestDetail.url+'&'+biz;
+
+          var res = request('GET', 'http://localhost:6210/article_next?'+urlplusbiz);
           var finalJS = res.getBody();
 
           // FIXME: 如何确保顺序：get(js)->post(content)
@@ -140,7 +144,7 @@ module.exports = {
             console.log(sd.format(new Date(), '--------------[YYYY-MM-DD HH:mm:ss]') + " post article detail html content: " + res.statusCode, body);
           })
 
-          // 注入finalJS
+          // // 注入finalJS
           var content = resbody.replace("<!--headTrap<body></body><head></head><html></html>-->","").replace("<!--tailTrap<body></body><head></head><html></html>-->","");
           content = content.replace("</body>",finalJS + "\n</body>");   
 
@@ -152,19 +156,18 @@ module.exports = {
 
           var buffer = new Buffer(content);
           responseDetail.response.body = buffer;
-          // TODO: 或许需要在这里延迟返回
           return responseDetail;
         }
 
         // read, like num
         // FIXME: url的匹配
         else if (/\/mp\/getappmsgext\?/i.test(requestDetail.url)) {
-          // TODO: 不如多打印几行，尽量保证上面的get(js)和post(content)在Server执行完，至少请求先到达Server
           console.log(sd.format(new Date(), '--------------[YYYY-MM-DD HH:mm:ss]') + " 处理阅读数据的响应********************************************************************");
           // C. http, POST数据, 非同步
-          // 耗时操作，例如一段为真的正则表达式或者除法
           var client = request_json.newClient('http://localhost:6210/');
-          var data = {statistic: resbody, requrl: requestDetail.url};
+          // TODO:在保证s?_biz -> f=json的前提下，可以在这里传递s?_biz的url，用于在服务端匹配对应的文章
+          var data = {statistic: resbody, requrl: urlplusbiz};
+          console.log("num_urlplusbiz: " + urlplusbiz)
           client.post('num', data, function(err, res, body) {
             console.log(sd.format(new Date(), '--------------[YYYY-MM-DD HH:mm:ss]') + " post read like num: " + res.statusCode, body);
           })

@@ -1,26 +1,32 @@
 import web
 import json
 import time
-# from mongodb import MongoDB
-# from queue import Queue
+import random
+import tools
 import PublishArticle as pubart
 from get_info import get_history_list
 from get_info import get_article_content
 import win_unicode_console
 
-from tools import *
+from initial import *
 
 # 解决cmd中打印报错
 win_unicode_console.enable()
 # FIXME: Bug1 保证顺序：get(js)、post(content)、post(num). 对于post(num)可以在nodejs中delay请求num的请求；
-# FIXME: Bug2 new a MongoDB.连接到数据库 wechat。：此时也会执行TempArticle = None。 为什么数据库会重连？？，使用单例？。import tools;
-# FIXME: bug3 AccountQueue中必须保证至少有1个biz，否则由于get先于post执行，初始biz在getJS时ArticleQueue是空的
-# FIXME: Bug4 一篇文章请求两次s?_biz的情况 : 检查
-# FIXME: 客户端打开文章详情页的时候，网络卡顿或者延迟崩溃
+# AccountQueue中必须保证至少有1个biz，否则由于get先于post执行，初始biz在getJS时ArticleQueue是空的
 
-# TODO: 1 Server2: 提取到的content之后报错，在准备入库之前，但是提取content试了没有问题
-# TODO: 2 对于标题和提取到的内容不同步的问题，可以在修改文章内容的时候提取一下title，和TempArticle.title比对一下，num里可能就没有标题
-TimeDelay = 1000
+
+# 文章间隔1-2s
+MinDelay = 1000
+MaxDelay = 1000 * 2
+
+# 公众号间隔10-20s
+MinAccountSleep = 1000 * 10
+MaxAccountSleep = 1000 * 20
+
+# Batch间隔1-2min
+MinBatchSleep = 1000 * 60
+MaxBatchSleep = 1000 * 120
 
 urls = (
     '/', 'Index',
@@ -48,7 +54,17 @@ class HistoryJs:
 class ArticleJs:
     def GET(self):
         print("Server: 1 receive get from article_next for js...")
-        return on_article_js()
+        params = web.input()
+        # TODO: 提取_biz
+        # <Storage {'lang': 'zh_CN', 'version': '26060532', 'scene': '27', 'chksm': 'bd1488b88a6301ae88858af7f3ce31eb1b6d9d3020f84840dbef86d4e21f65d613c0a4f5cf6d', 'idx': '1', 'wx_header': '1',
+        #  'abtest_cookie': 'AwABAAoACwAMAAkAl4oeAKaKHgA+ix4ASIseAHeLHgCpjB4A4IweAAONHgAFjR4AAAA=', 'mid': '2651076715', 'pass_ticket': 'rqYRw2Y9ByHVA1GhpaXcEDR+XRfFeUdd9YzJ6RP/0pGLrE7WipRxKLVj
+        # 5HMZUerF', 'sn': '3a06382baf2db57ec8e4563031f7f98a', 'devicetype': 'android-17', 'nettype': 'WIFI', 'ascene': '3', 'https://mp.weixin.qq.com/s?__biz': 'MjM5Njc3NjM4MA=='}>
+        biz = params.biz
+        mid = params.mid
+        idx = params.idx
+        key = biz+':'+mid+':'+idx
+        print("key：%s" % key)
+        return on_article_js(key)
 
 
 # 历史文章
@@ -76,7 +92,7 @@ class ArticleDetail:
         data_dict = json.loads(data)
         htmlbody = data_dict['htmlbody']
         requrl = data_dict['requrl']
-        on_article_detail(htmlbody)
+        on_article_content(htmlbody, requrl)
 
 
 # read, like num
@@ -89,39 +105,51 @@ class ReadLikeNum:
         data = web.data().decode(encoding="utf-8")
         data_dict = json.loads(data)
         statistic = data_dict['statistic']
-        on_read_like_num(statistic)
+        requrl = data_dict['requrl']
+        print("requrl: %s" % requrl)
+        on_read_like_num(statistic, requrl)
 
 
 # 处理文章内容
-def on_article_detail(html):
+# TODO: 可以选择先入库
+def on_article_content(html, requrl):       # requrl修改，添加了&biz字段
     content = get_article_content(html)
-    TempArticle.content = content
     end = min(60, len(content))
-    print("提取到的content: %s %s" % (TempArticle.title, content[:end]))
+    key = tools.get_id(requrl)
+    if key in ArticleDict:
+        cur_article = ArticleDict[key]
+        cur_article.content = content
+        print("%s %s %s %s" % (key, cur_article.nickname, cur_article.title, content[:end]))
+    else:
+        print("重复内容请求: ", ArticleDict.keys())
+        # raise RuntimeError("key %s not in Dict when update content." % key)
 
 
-# FIXME:处理read, liked, 此时可能还是为None?
-def on_read_like_num(statistic):
+# TODO:可以在提取到content之后就入库，然后更新，防止num请求pass了
+def on_read_like_num(statistic, requrl):    # requrl修改，添加了&biz字段
+    mid = tools.get_param(requrl, 'mid')
+    key = tools.get_id(requrl)
+    if not key:
+        print("on_read_like_num: 找不到key, requrl: %s 可能已经被缓存" % requrl)
+        return
+
     sta_dict = json.loads(statistic)
-    read = sta_dict['appmsgstat']['read_num']
-    like = sta_dict['appmsgstat']['like_num']
-    print("read: %d, like: %d" % (read, like))
-    TempArticle.read_num = read
-    TempArticle.like_num = like
-    # 暂且默认read,like获取后，content已经不为空了
-    # FIXME:但是说不定content确实就是空呢;为空可能是因为Server没有响应，重开就可以
-    # 可以考虑在TempArticle再次赋值的时候保存入库
-    if not TempArticle.content.strip():
-        # 如果还没有提取到content，sleep(1)，延迟1s入库
-        print("++++++++++++++++++++++ read, like之后，文章内容为空， sleep 1s???+++++++++++++++++++++++++++++")
-        # FIXME: 主线程阻塞
-        # time.sleep(1)   # TODO: 这样就不会bug3了？？？但是Bug1
-        if not TempArticle.content.strip():
-            print("-------------------------------------content依然为空-----------------------------------------------")
-    end = min(60, len(TempArticle.content))
-    print("准备入库 %s: Title: %s %s" % (TempArticle.nickname, TempArticle.title, TempArticle.content[:end]))
-    if not mongodb.add("article", TempArticle.json()):
-        print("****************************数据库add失败********************************")
+    read_num = sta_dict['appmsgstat']['read_num']
+    like_num = sta_dict['appmsgstat']['like_num']
+    if key in ArticleDict:
+        cur_article = ArticleDict[key]
+        cur_article.read_num = read_num
+        cur_article.like_num = like_num
+        cur_article.mid = mid
+        cur_article.key = key
+        print("%s %s read:%d like:%d" % (key, ArticleDict[key].title, read_num, like_num))
+        # remove and send to db
+        if not mongodb.add("second", ArticleDict[key].json()):
+            print("****************************数据库add失败********************************\n")
+        del ArticleDict[key]       # req1, req2, num, req3. 对于req3直接pass
+    else:   # 不存在文章
+        print(ArticleDict.keys())
+        # raise RuntimeError("key: %s not in Dict when update num." % key)
 
 
 # 处理历史文章
@@ -136,10 +164,8 @@ def on_recent_articles(html):
     for raw_dict_of_the_day in history_list:
         # 如果当天发布的不是图文消息，则略过
         if raw_dict_of_the_day['comm_msg_info']['type'] != 49:
-            print("Ignore this day %s : none type:49 message..." % raw_dict_of_the_day['comm_msg_info']['datetime'])
             continue
         daily_articles = pubart.PublishArticle(biz=biz, nickname=nickname, raw_dict=raw_dict_of_the_day)
-        # TODO:暂时不考虑大规模收集历史数据
         # 三天以内的文章才需要访问(insert, update)
         span = (time.time() - daily_articles.datetime) / 86400
         if span < 2:
@@ -149,54 +175,51 @@ def on_recent_articles(html):
                 # 将文章入队列
                 url = article.content_url.replace("\\", "")
                 article.content_url = url
-                RealArticleQueue.put(article)
-                NextArticleUrlQueue.put(url)
-                print("Queue size after put: ", RealArticleQueue.qsize(), NextArticleUrlQueue.qsize(), article.title)
+                # biz:mid:idx
+                key = tools.get_id(url)
+                article.article_id = key
+                ArticleDict[key] = article
+                ArticleList.append(url)
+                print("Dict.len=%d, Add %s" % (len(ArticleDict), key))
+                print("List.len=%d, Add %s" % (len(ArticleList), url))
 
 
 # 处理文章详情
-def on_article_js():
-    # 完善当前访问的文章的详细信息，此时RealArticle必定不为空
-    global TempArticle
-    TempArticle = RealArticleQueue.get()
-    print("RealArticle size after get: %s" % RealArticleQueue.qsize())
+def on_article_js(key):
+    # 完善当前访问的文章的详细信息
+    if key not in ArticleDict:
+        print("on_article_js重复: %s" % key)
+        # raise RuntimeError("Error")
+        # TODO: 对于重复的文章内容请求，return?return js
+        return ""
 
-    if not NextArticleUrlQueue.empty():
+    # 下一篇文章的url作为JS
+    if key in NextUrlDict:
         # 下一个需要访问的文章url
-        next_url = NextArticleUrlQueue.get()
-        print("NextArticleUrlQueue size after get: %s" % NextArticleUrlQueue.qsize())
+        print("on_article_js: %s" % key)
+        next_url = NextUrlDict[key]
         article_url = '\'' + next_url + '\''
-        result_js = '<script type="text/javascript">var url =' + article_url + ';setTimeout(function() {window.location.href=url;}, 1000);</script>'
-    else:
-        print("NextArticleUrlQueue is empty, add Account..")
-        # TODO:一轮结束后，继续添加Account，例如添加2个Account，同时取出第一个Account biz作为JS返回
-        for i in range(3):
+        result_js = '<script type="text/javascript">var url =' + article_url + ';setTimeout(function() {window.location.href=url;}, ' + str(random.randint(MinDelay, MaxDelay)) + ');</script>'
+    else:       # key no in NextUrlDict
+        # 可能是访问到了最后一篇文章
+        print("on_article_js: 没有后续文章, add Account and clear ArticleList, NextUrlDict, ArticleDict")
+        for i in range(BatchSize):
             global INDEX
-            INDEX += 1
+            INDEX = 1 + INDEX
+            # TODO: 最后一个Account，再次从头开始
+            if INDEX == len(TotalAccount):
+                INDEX = 0
             AccountQueue.put(TotalAccount[INDEX])
             print("Index: %d, %s" % (INDEX, TotalAccount[INDEX]))
         account_biz = AccountQueue.get()[0]
-        result_js = '<script type="text/javascript">var url = "https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=' + account_biz + '&scene=124#wechat_redirect";setTimeout(function() {window.location.href=url;}, 1000);</script>'
-    return result_js
-
-
-def on_history_js_back():
-    print("2222222222222222222222222222222222222222222222222根据Queue, 处理需要返回的JS...")
-    if not RealArticleQueue.empty():
-        global TempArticle
-        TempArticle = RealArticleQueue.get()
-        print("size after get: ", RealArticleQueue.qsize())
-        print("Article.Queue is not empty, get: %s" % TempArticle.title)
-        article_url = '\'' + TempArticle.content_url + '\''
-        result_js = '<script type="text/javascript">var url =' + article_url + ';setTimeout(function() {window.location.href=url;}, 10000);</script>'
-    elif not AccountQueue.empty():
-        print("RealArticle is empty, not the AccountQueue, so fetch next Account")
-        account_biz = AccountQueue.get()
-        result_js = '<script type="text/javascript">var url = "https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=' + account_biz + '&scene=124#wechat_redirect";setTimeout(function() {window.location.href=url;}, 10000);</script>'
-    else:
-        print("AccountQueue is empty, return 唐唐")
-        result_js = '<script type="text/javascript">var url = "https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MjM5OTIwODMzMQ==&scene=124#wechat_redirect";setTimeout(function() {window.location.href=url;}, 10000);</script>'
-        # default_js = ""
+        result_js = '<script type="text/javascript">var url = "https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=' + account_biz + '&scene=124#wechat_redirect";setTimeout(function() {window.location.href=url;}, ' + str(random.randint(MinBatchSleep, MaxBatchSleep)) + ');</script>'
+        # FIXME: 这里就清除，可能会出错，例如在这时候来了一个文章内容请求
+        NextUrlDict.clear()
+        # 在ArticleDict中只保留这篇文章
+        last_article = ArticleDict[key]
+        ArticleDict.clear()
+        ArticleDict[key] = last_article
+        ArticleList.clear()
     return result_js
 
 
@@ -207,18 +230,22 @@ def on_history_js():
         account_biz = account[0]
         print("AccountQueue size after get: %d" % AccountQueue.qsize())
         print("You have just get: ", account, "and return its biz as JS.")
-        result_js = '<script type="text/javascript">var url = "https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=' + account_biz + '&scene=124#wechat_redirect";setTimeout(function() {window.location.href=url;}, 1000);</script>'
+        result_js = '<script type="text/javascript">var url = "https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=' + account_biz + '&scene=124#wechat_redirect";setTimeout(function() {window.location.href=url;}, ' + str(random.randint(MinAccountSleep, MaxAccountSleep)) + ');</script>'
     else:
-        # AccountQueue为空时,取出第一个文章url    # FIXME: 如果此时队列里面只有一个文章
-        print("AccountQueue is empty, pop the first article url ...")
-        next_url = NextArticleUrlQueue.get()
-        print("ArticleUrlQueue size after First get: %s" % NextArticleUrlQueue.qsize())
-        article_url = '\'' + next_url + '\''
-        result_js = '<script type="text/javascript">var url =' + article_url + ';setTimeout(function() {window.location.href=url;}, 1000);</script>'
+        # 读取第一篇文章
+        print("这是最后一个需要处理的history,返回第一篇文章url作为JS")
+        # 初始化NextUrlDict
+        NextUrlDict.clear()
+        # FIXME: 如果一篇文章都没有
+        # id: next_url
+        for i in range(len(ArticleList) - 1):
+            key = tools.get_id(ArticleList[i])
+            NextUrlDict[key] = ArticleList[i + 1]
+        article_url = '\'' + ArticleList[0] + '\''
+        result_js = '<script type="text/javascript">var url =' + article_url + ';setTimeout(function() {window.location.href=url;}, ' + str(random.randint(MinDelay, MaxDelay)) + ');</script>'
     return result_js
 
 
 if __name__ == '__main__':
     app = web.application(urls, globals())
-    print("Server is running...")
     app.run()
