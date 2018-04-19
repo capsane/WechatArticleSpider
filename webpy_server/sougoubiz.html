@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<!--headTrap<body></body><head></head><html></html>--><html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+
+
+        <script nonce="" type="text/javascript">
+            window.logs = {
+                pagetime: {}
+            };
+            window.logs.pagetime['html_begin'] = (+new Date());
+        </script>
+
+        <link rel="dns-prefetch" href="//res.wx.qq.com">
+<link rel="dns-prefetch" href="//mmbiz.qpic.cn">
+<link rel="shortcut icon" type="image/x-icon" href="//res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/icon/common/favicon22c41b.ico">
+<script nonce="" type="text/javascript">
+    String.prototype.html = function(encode) {
+        var replace =["&#39;", "'", "&quot;", '"', "&nbsp;", " ", "&gt;", ">", "&lt;", "<", "&amp;", "&", "&yen;", "¥"];
+        if (encode) {
+            replace.reverse();
+        }
+        for (var i=0,str=this;i< replace.length;i+= 2) {
+             str=str.replace(new RegExp(replace[i],'g'),replace[i+1]);
+        }
+        return str;
+    };
+
+    window.isInWeixinApp = function() {
+        return /MicroMessenger/.test(navigator.userAgent);
+    };
+
+    window.getQueryFromURL = function(url) {
+        url = url || 'http://qq.com/s?a=b#rd';
+        var tmp = url.split('?'),
+            query = (tmp[1] || "").split('#')[0].split('&'),
+            params = {};
+        for (var i=0; i<query.length; i++) {
+            var arg = query[i].split('=');
+            params[arg[0]] = arg[1];
+        }
+        if (params['pass_ticket']) {
+        	params['pass_ticket'] = encodeURIComponent(params['pass_ticket'].html(false).html(false).replace(/\s/g,"+"));
+        }
+        return params;
+    };
+
+    (function() {
+	    var params = getQueryFromURL(location.href);
+        window.uin = params['uin'] || "" || '';
+        window.key = params['key'] || "" || '';
+        window.wxtoken = params['wxtoken'] || '';
+        window.pass_ticket = params['pass_ticket'] || '';
+        window.appmsg_token = "";
+    })();
+
+    function wx_loaderror() {
+        if (location.pathname === '/bizmall/reward') {
+            new Image().src = '/mp/jsreport?key=96&content=reward_res_load_err&r=' + Math.random();
+        }
+    }
+
+</script>
+
+<script nonce="" type="text/javascript">
+            window.no_moon_ls = 0;
+    </script>
+        <title>JAVA </title>
+
+<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/0.2.0/weui.css">
+<link rel="stylesheet" href="//res.wx.qq.com/mmbizwap/zh_CN/htmledition/style/page/profile/sougou_profile3d171e.css">
+<!--[if lt IE 9]>
+<link rel="stylesheet" type="text/css" href="//res.wx.qq.com/mmbizwap/zh_CN/htmledition/style/page/profile/sougou_profile_pc34eb15.css">
+<![endif]-->
+
+    </head>
+    <body id="" class="zh_CN ">
+
+<div class="page_profile_info">
+    <div class="page_profile_info_inner">
+        <div class="profile_info_area">
+            <div class="profile_info_group">
+                <span class="radius_avatar profile_avatar">
+                                        <img src="http://wx.qlogo.cn/mmhead/Q3auHgzwzM6TvjOSe6Sfyx2ksaaDoMS9KGEhnkdnQaqJxpqDxeQjPw/0">
+                                    </span>
+                <div class="profile_info">
+                    <strong class="profile_nickname">
+                      JAVA
+                    </strong>
+                                        <p class="profile_account">微信号: javabaiwen</p>
+                                    </div>
+            </div>
+            <ul class="profile_desc">
+                <li>
+                    <label class="profile_desc_label" for="">功能介绍</label>
+                    <div class="profile_desc_value" title="海量JAVA资源免费分享（V信公众号二次开发教程、电子书、视频、笔记、精彩文章、经验交流、最新技术）；关注后请回复需要的内容；我会及时发送给你。">海量JAVA资源免费分享（V信公众号二次开发教程、电子书、视频、笔记、精彩文章、经验交流、最新技术）；关注后请回复需要的内容；我会及时发送给你。</div>
+                </li>
+                <li>
+                    <label class="profile_desc_label" for="">帐号主体</label>
+                    <div class="profile_desc_value">海量JAVA资源免费分享（V信公众号二次开发教程、电子书、视频、笔记、精彩文章、经验交流、最新技术）；关注后请回复需要的内容；我会及时发送给你。</div>
+                </li>
+            </ul>
+
+            <div class="profile_opr"  style="display:none">
+                            <a href="javascript:void(0);" id="copyBt" class="weui_btn weui_btn_plain_primary">复制微信号</a>
+                        </div>
+
+        </div>
+        <div class="weui_category_title">最近10条群发</div>
+        <div class="weui_msg_card_list" id="history">
+
+        </div>
+        <div class="msg_card_tips">仅显示最近10条群发</div>
+
+        <div class="loadmore" style="display:none;" id="js_loading">
+            <div class="tips_wrp"><i class="icon_loading"></i><span class="tips">正在加载</span></div>
+        </div>
+        <div class="loadmore with_line" style="display:none;" id="js_nomore">
+            <div class="tips_wrp"><span class="tips">已无更多</span></div>
+        </div>
+    </div>
+    <div id="js_pc_qr_code" class="qr_code_pc_outer">
+        <div class="qr_code_pc_inner">
+            <div class="qr_code_pc">
+                <img id="js_pc_qr_code_img" class="qr_code_pc_img" src="/rr?timestamp=1523972482&amp;src=3&amp;ver=1&amp;signature=9RyYgWl9TozyVKvTsPHQYWR34OVH*i2iAx4GZUdD4wNcszC5lejOFUjPc*bpSrBsRnt*tHuC2rNRLw69wy-MfqKY*P4H-7UMcdIK5BlV6-0=">
+                <p>微信扫一扫<br>关注该公众号</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <script nonce="">
+    var __DEBUGINFO = {
+        debug_js : "//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/debug/console34c264.js",
+        safe_js : "//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/safe/moonsafe34c264.js",
+        res_list: []
+    };
+</script>
+
+<script nonce="" type="text/javascript">
+(function() {
+	var totalCount = 0,
+			finishCount = 0;
+
+	function _loadVConsolePlugin() {
+		window.vConsole = new window.VConsole();
+		while (window.vConsolePlugins.length > 0) {
+			var p = window.vConsolePlugins.shift();
+			window.vConsole.addPlugin(p);
+		}
+	}
+
+	function _addVConsole(uri, cb) {
+		totalCount++;
+		var url = '//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/vconsole/' + uri;
+		var node = document.createElement('SCRIPT');
+		node.type = 'text/javascript';
+		node.src = url;
+		node.setAttribute('nonce', '');
+		if (cb) {
+			node.onload = cb;
+		}
+		document.getElementsByTagName('head')[0].appendChild(node);
+	}
+	if (
+		(document.cookie && document.cookie.indexOf('vconsole_open=1') > -1)
+		|| location.href.indexOf('vconsole=1') > -1
+	) {
+		window.vConsolePlugins = [];
+		_addVConsole('3.0.0/vconsole.min.js', function() {
+
+			_addVConsole('plugin/vconsole-mpopt/1.0.1/vconsole-mpopt.js', _loadVConsolePlugin);
+		});
+	}
+})();
+</script>
+
+        <script>window.__moon_host = 'res.wx.qq.com';window.moon_map = {"biz_common/utils/respTypes.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_common/utils/respTypes3518c6.js","biz_common/utils/url/parse.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_common/utils/url/parse36ebcf.js","biz_common/template-2.0.1-cmd.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_common/template-2.0.1-cmd3518c6.js","biz_wap/jsapi/core.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/jsapi/core3b0568.js","biz_common/dom/class.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_common/dom/class3518c6.js","biz_common/utils/string/emoji.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_common/utils/string/emoji3518c6.js","biz_wap/utils/ajax.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/utils/ajax38c31a.js","history/profile_history.html.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/history/profile_history.html3944ad.js","biz_common/utils/string/html.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_common/utils/string/html3518c6.js","history/template_helper.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/history/template_helper24f185.js","appmsg/cdn_img_lib.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/appmsg/cdn_img_lib38b7bb.js","biz_common/dom/event.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_common/dom/event3a25e9.js","history/profile_history.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/history/profile_history3602f0.js","sougou/profile.js":"//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/sougou/profile31dd7f.js"};</script><script type="text/javascript">window.__wxgspeeds={}; window.__wxgspeeds.moonloadtime=+new Date()</script><script  type="text/javascript" src="//res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/biz_wap/moon3d01af.js"></script>
+<script type="text/javascript">
+    document.domain="qq.com";
+    var biz = "MzAwOTE3NDY5OA==" || "";
+    var src = "3" ;
+    var ver = "1" ;
+    var timestamp = "1523972033" ;
+    var signature = "kCY8JFgMeqS1V03zzBWgyBoqB1RU7XzFjPNQuFmOlV7IOyliyBkAhHptONgiKmoTz4DbvdYih2PdeNMnL-MyMA==" ;
+    var name="javabaiwen"||"JAVA";
+        var msgList = {"list":[{"app_msg_ext_info":{"audio_fileid":0,"author":"","content":"","content_url":"/s?timestamp=1523972482&amp;src=3&amp;ver=1&amp;signature=FNKo1QmgYDJpe3Z9MGXVYXU4nmLvubx8sG196nMA2hNWfUeuRMLy4C93ELj4nOjOGlXra1ORD4anhUvvEcBuTcoaOdOcJcaR6iLO*IoTXZrXnkwI3GgkwGQa7xp8RaigSDcD3beBmkBJuZZ1iRBUUspxxpdT2qTCq8e8OdQgKpQ=","copyright_stat":101,"cover":"http://mmbiz.qpic.cn/mmbiz_jpg/ao1X60fxAY7dKsaBVECjbNPUQKWoMN6kWBmkCh53W6Aj76jlFVSp1xibGMtmuUAibPfSNmCSBOmxmnOKUb0GibW5A/0?wx_fmt=jpeg","del_flag":1,"digest":"分享一篇文章。","duration":0,"fileid":0,"is_multi":0,"item_show_type":0,"multi_app_msg_item_list":[],"play_url":"","source_url":"","subtype":9,"title":"店面生意不好，紧急催财布局，两天见效。"},"comm_msg_info":{"content":"","datetime":1523844689,"fakeid":"3009174698","id":1000000148,"status":2,"type":49}},{"app_msg_ext_info":{"audio_fileid":0,"author":"","content":"","content_url":"/s?timestamp=1523972482&amp;src=3&amp;ver=1&amp;signature=FNKo1QmgYDJpe3Z9MGXVYXU4nmLvubx8sG196nMA2hNWfUeuRMLy4C93ELj4nOjOGlXra1ORD4anhUvvEcBuTY*gcUx0t85v1sk8fiIWsiAgR5pDw-VBfDDasEcNI4syplYULqTxmSc7LGGm3VuvRXwW3rA1NgUzJRe1-pj8KOA=","copyright_stat":100,"cover":"http://mmbiz.qpic.cn/mmbiz_jpg/a7wPU9Eqe9uPEXYHvIa1WiahibZXtP6JTte2Id4yOKRRbXF8taOrPzuKJazB7m4xtz3tdeAGiaHl1enswZwN70Mvg/0?wx_fmt=jpeg","del_flag":1,"digest":"人工智能尖端人才远远不能满足需求。行业风口的人工智能，在中国人才缺口将超过500万人，而中国人工智能人才数量目前只有5万。 如果你对自己的专业/工作不满意，现在正是进入人工智能领域学习就业/转业的最佳时机。","duration":0,"fileid":500423063,"is_multi":0,"item_show_type":0,"multi_app_msg_item_list":[],"play_url":"","source_url":"https://mici.jiqishidai.com/site/course_introduction?id=4&amp;ci=1","subtype":9,"title":"年薪50万的AI人才缺口上百万：人工智能领域两大重磅消息!"},"comm_msg_info":{"content":"","datetime":1523449800,"fakeid":"3009174698","id":1000000147,"status":2,"type":49}},{"app_msg_ext_info":{"audio_fileid":0,"author":"JAVA海量资源","content":"","content_url":"/s?timestamp=1523972482&amp;src=3&amp;ver=1&amp;signature=FNKo1QmgYDJpe3Z9MGXVYXU4nmLvubx8sG196nMA2hNWfUeuRMLy4C93ELj4nOjOGlXra1ORD4anhUvvEcBuTSLp2MnyETusdbNYwwLgwbc8YBB-YRkwTQ*FlJfLZWP9AaUZLYE7bWPeY2dWDtvMVyrnuM0LwdaCFsMqiXdyxvs=","copyright_stat":100,"cover":"http://mmbiz.qpic.cn/mmbiz_jpg/a7wPU9Eqe9slrygxfGEiciaNs8jnFag397ibNzyvlZfYN7oAMA2icIA1QW0TRj3QGTyqZTXjFnIHBaCcSPIAssIoicg/0?wx_fmt=jpeg","del_flag":1,"digest":"18 年已然要过去 1/4 ，相信有准备跳槽的小伙伴，已经开始了新的征程。 但是，年初给自己定的目标，打的鸡","duration":0,"fileid":500423056,"is_multi":0,"item_show_type":0,"multi_app_msg_item_list":[],"play_url":"","source_url":"","subtype":9,"title":"大家要的学习资料"},"comm_msg_info":{"content":"","datetime":1522711800,"fakeid":"3009174698","id":1000000145,"status":2,"type":49}},{"app_msg_ext_info":{"audio_fileid":0,"author":"JAVA电子书","content":"","content_url":"/s?timestamp=1523972482&amp;src=3&amp;ver=1&amp;signature=FNKo1QmgYDJpe3Z9MGXVYXU4nmLvubx8sG196nMA2hNWfUeuRMLy4C93ELj4nOjOGlXra1ORD4anhUvvEcBuTfv5f0juRUC68u4IHJGXSVTTioaEOD10D0lC30Md1XVZdGhuOPUyw5r22pDmiZ1q-qwb*z-E9Q9msR0YrFEGNyU=","copyright_stat":100,"cover":"http://mmbiz.qpic.cn/mmbiz_jpg/a7wPU9Eqe9slrygxfGEiciaNs8jnFag3973mumfJrN13tMiarBcibRJYNMNecUAVPg4szWZtQJ5PaenfCjOJbL4P3w/0?wx_fmt=jpeg","del_flag":1,"digest":"21天学通HTML CSS JavaScript Web开发（第7版）是全球畅销书《21天学通使用HTML与","duration":0,"fileid":500423060,"is_multi":0,"item_show_type":0,"multi_app_msg_item_list":[],"play_url":"","source_url":"","subtype":9,"title":"21天学通HTML+CSS+JavaScript Web开发(第7版) 中文完整pdf扫描版"},"comm_msg_info":{"content":"","datetime":1522680397,"fakeid":"3009174698","id":1000000146,"status":2,"type":49}},{"app_msg_ext_info":{"audio_fileid":0,"author":"","content":"","content_url":"/s?timestamp=1523972482&amp;src=3&amp;ver=1&amp;signature=FNKo1QmgYDJpe3Z9MGXVYXU4nmLvubx8sG196nMA2hNWfUeuRMLy4C93ELj4nOjOGlXra1ORD4anhUvvEcBuTU7EVWvm4caAgQSucSCyhC74mMHj3As54mswzRq*dfruynzDaC5j3-qlr*n1uE7idtVtKR0IJA7TKyO*9k3OOjM=","copyright_stat":100,"cover":"http://mmbiz.qpic.cn/mmbiz_jpg/a7wPU9Eqe9uIKeoKoshXfpsRTiaCFZ31znIIVQ4ATOoNmZVnkM1IxEDFGAAkdMx0XzLvRcrGhIFLwxC63IyW9HA/0?wx_fmt=jpeg","del_flag":1,"digest":"Java语言程序设计教程以培养学生的面向对象的思维和面向对象的编程技术为核心，从学生认知心理角度出发，通过精","duration":0,"fileid":500423047,"is_multi":1,"item_show_type":0,"multi_app_msg_item_list":[{"audio_fileid":0,"author":"","content":"","content_url":"/s?timestamp=1523972482&amp;src=3&amp;ver=1&amp;signature=FNKo1QmgYDJpe3Z9MGXVYXU4nmLvubx8sG196nMA2hNWfUeuRMLy4C93ELj4nOjOGlXra1ORD4anhUvvEcBuTU7EVWvm4caAgQSucSCyhC5WSCe2IYIwZY3BE2vKNZuiPUciAj6zwlttMCO*2cyy0pmQKHNQxO*1OcNB2XxS4pI=","copyright_stat":100,"cover":"http://mmbiz.qpic.cn/mmbiz_jpg/a7wPU9Eqe9uIKeoKoshXfpsRTiaCFZ31zqIbuvRgC2aURukPzZkhrQJaks0kohQdL8PRXAKUpnqQ450ho3MgicgA/0?wx_fmt=jpeg","del_flag":1,"digest":"在面试中我们经常被问到：Java中抽象类和接口的区别是什么？然后，我们就大说一通抽象类可以有方法，接口不能有","duration":0,"fileid":500423048,"item_show_type":0,"play_url":"","source_url":"","title":"我是如何理解Java抽象类和接口的"},{"audio_fileid":0,"author":"","content":"","content_url":"/s?timestamp=1523972482&amp;src=3&amp;ver=1&amp;signature=FNKo1QmgYDJpe3Z9MGXVYXU4nmLvubx8sG196nMA2hNWfUeuRMLy4C93ELj4nOjOGlXra1ORD4anhUvvEcBuTU7EVWvm4caAgQSucSCyhC4vVf0R96OlDkR1GLaH2rGwtu4HymgA4ZO1CDZ*qyGXU-xEAS7TcN6e3JFgwnffgBw=","copyright_stat":100,"cover":"http://mmbiz.qpic.cn/mmbiz_jpg/a7wPU9Eqe9uIKeoKoshXfpsRTiaCFZ31zC8TMIFp1icVEVK0qjV6VIctvlRibY1hXOCuUPYF7Via3jHqqScg9WFicdw/0?wx_fmt=jpeg","del_flag":1,"digest":"在任何Java面试当中多线程和并发方面的问题都是必不可少的一部分。如果你想获得任何股票投资银行的前台资讯职位","duration":0,"fileid":500423049,"item_show_type":0,"play_url":"","source_url":"","title":"15个顶级Java多线程面试题及答案"}],"play_url":"","source_url":"","subtype":9,"title":"Java语言程序设计教程"},"comm_msg_info":{"content":"","datetime":1521731444,"fakeid":"3009174698","id":1000000144,"status":2,"type":49}},{"app_msg_ext_info":{"audio_fileid":0,"author":"","content":"","content_url":"/s?timestamp=1523972482&amp;src=3&amp;ver=1&amp;signature=FNKo1QmgYDJpe3Z9MGXVYXU4nmLvubx8sG196nMA2hNWfUeuRMLy4C93ELj4nOjOGlXra1ORD4anhUvvEcBuTa*fuIUHUSVYv5mGoKX3HmXZ3gr09D8Xym5uKLssjYDMw7zaJ0DaW8plgyAuqOsMFyHcw-nG8KJv8QkKCGHjse4=","copyright_stat":100,"cover":"http://mmbiz.qpic.cn/mmbiz_jpg/a7wPU9Eqe9trVkUJDtibm8qQ3ZHkYKIdLlIEm7Cn4KrsD5k6lAkAVib4hw5jCQibe00ziaXAVxORnicdS6jZ7XNo85A/0?wx_fmt=jpeg","del_flag":1,"digest":"《C#开发实例大全（基础卷）》筛选、汇集了C#开发从基础知识到高级应用各个层面约600个实例及源代码，每个实","duration":0,"fileid":500423041,"is_multi":1,"item_show_type":0,"multi_app_msg_item_list":[{"audio_fileid":0,"author":"","content":"","content_url":"/s?timestamp=1523972482&amp;src=3&amp;ver=1&amp;signature=FNKo1QmgYDJpe3Z9MGXVYXU4nmLvubx8sG196nMA2hNWfUeuRMLy4C93ELj4nOjOGlXra1ORD4anhUvvEcBuTa*fuIUHUSVYv5mGoKX3HmVG2ge60EsLqek3aHQbSbT5CWJ5la6T07joAaj*Telfwdl1ClpAJ7IPPbUrTcFkQGA=","copyright_stat":100,"cover":"http://mmbiz.qpic.cn/mmbiz_jpg/a7wPU9Eqe9trVkUJDtibm8qQ3ZHkYKIdLcrVNfQ8tgvfQgNJwUFEFytdP0wicOiblNaUzefql5lS7aSeEUicZCQnJA/0?wx_fmt=jpeg","del_flag":1,"digest":"C#开发实例大全（提高卷）筛选、汇集了C#开发从基础知识到高级应用各个层面约600个实例及源代码，每个实例都","duration":0,"fileid":500423043,"item_show_type":0,"play_url":"","source_url":"","title":"C#开发实例大全(提高卷) 中文完整"}],"play_url":"","source_url":"","subtype":9,"title":"C#开发实例大全(基础卷) 中文完整"},"comm_msg_info":{"content":"","datetime":1521502200,"fakeid":"3009174698","id":1000000143,"status":2,"type":49}},{"app_msg_ext_info":{"audio_fileid":0,"author":"","content":"","content_url":"/s?timestamp=1523972482&amp;src=3&amp;ver=1&amp;signature=FNKo1QmgYDJpe3Z9MGXVYXU4nmLvubx8sG196nMA2hNWfUeuRMLy4C93ELj4nOjOGlXra1ORD4anhUvvEcBuTVLUKMMtSP-obMe*NKutOMoCgnvV74CTu5d*YwYxihTENaC2MmqzsV7nOC8TwfBTyJZDSBMuwdcr1xoz3F7TeP4=","copyright_stat":100,"cover":"http://mmbiz.qpic.cn/mmbiz_jpg/a7wPU9Eqe9svWun124LLfRSE9tNa7Mn0iaNDgIliaAvMm60mzaytVcEFcY9oXtib3pe9cIsLfvOVTpbLjTGric6y9g/0?wx_fmt=jpeg","del_flag":1,"digest":"做到这件事，2018年你也能涨薪15万+","duration":0,"fileid":500423028,"is_multi":0,"item_show_type":0,"multi_app_msg_item_list":[],"play_url":"","source_url":"","subtype":9,"title":"那些4个月涨薪15万+的Java程序员，都是因为做到了这件事"},"comm_msg_info":{"content":"","datetime":1521415800,"fakeid":"3009174698","id":1000000142,"status":2,"type":49}},{"app_msg_ext_info":{"audio_fileid":0,"author":"JAVA电子书","content":"","content_url":"/s?timestamp=1523972482&amp;src=3&amp;ver=1&amp;signature=FNKo1QmgYDJpe3Z9MGXVYXU4nmLvubx8sG196nMA2hNWfUeuRMLy4C93ELj4nOjOGlXra1ORD4anhUvvEcBuTaAXWk11QSf7--yutRWz4uR7sRXVE4ZkBiHuOnQi8uT4kaHJwbq4ISmAP*USIWffcIYvXeNm-*909UZZ0encplc=","copyright_stat":100,"cover":"http://mmbiz.qpic.cn/mmbiz_jpg/a7wPU9Eqe9svWun124LLfRSE9tNa7Mn0iaL1HJbkafhm0jR4nTkWEVGB6OR3DvWO3dKyICs46yg7MJiaZ3TibPrrQ/0?wx_fmt=jpeg","del_flag":1,"digest":"Java Web开发实例大全（提高卷）筛选、汇集了Java Web开发从基础知识到高级应用各个层面的大量实例","duration":0,"fileid":500423034,"is_multi":0,"item_show_type":0,"multi_app_msg_item_list":[],"play_url":"","source_url":"","subtype":9,"title":"Java Web开发实例大全(提高卷) 完整"},"comm_msg_info":{"content":"","datetime":1521378949,"fakeid":"3009174698","id":1000000141,"status":2,"type":49}},{"app_msg_ext_info":{"audio_fileid":0,"author":"JAVA电子书","content":"","content_url":"/s?timestamp=1523972482&amp;src=3&amp;ver=1&amp;signature=FNKo1QmgYDJpe3Z9MGXVYXU4nmLvubx8sG196nMA2hNWfUeuRMLy4C93ELj4nOjOGlXra1ORD4anhUvvEcBuTa40joV3T3rw0vQAxjanL0iRY5ofWNdPH*ww8kz0rAbtIFNod03vPodWEAbdzcq2K40xgEK8qy9fS6p1cpbWVjg=","copyright_stat":100,"cover":"http://mmbiz.qpic.cn/mmbiz_jpg/a7wPU9Eqe9sV3xG0pOBKwv0TZXCib3zrDiaA1Kia62Qj24Vs8Rwribmgq1MotRBWOjftDdzib3ubFCWZYgKBoD8rUbg/0?wx_fmt=jpeg","del_flag":1,"digest":"Java开发实例大全（基础卷）筛选、汇集了Java开发从基础知识到高级应用各个层面约600个实例，每个实例按","duration":0,"fileid":500423024,"is_multi":0,"item_show_type":0,"multi_app_msg_item_list":[],"play_url":"","source_url":"","subtype":9,"title":"Java开发实例大全(基础卷) 高清完整"},"comm_msg_info":{"content":"","datetime":1521301765,"fakeid":"3009174698","id":1000000139,"status":2,"type":49}},{"app_msg_ext_info":{"audio_fileid":0,"author":"海量电子书","content":"","content_url":"/s?timestamp=1523972482&amp;src=3&amp;ver=1&amp;signature=FNKo1QmgYDJpe3Z9MGXVYXU4nmLvubx8sG196nMA2hNWfUeuRMLy4C93ELj4nOjOGlXra1ORD4anhUvvEcBuTc0OSw1ymnkms3GPYTn--YmWZB*pQprilpiUmATOFqwTwgXpkotkPYJSr0lIB0kiCvHfloJ7FVxKE7PFheIR7wE=","copyright_stat":100,"cover":"http://mmbiz.qpic.cn/mmbiz_jpg/a7wPU9Eqe9uxz6yU1gxOHItfU1ojGpmQwZqW8LJF78xoEia77tyc2sHk3a2lndPvTvaxwMhAAmKHpznSsdaz6YA/0?wx_fmt=jpeg","del_flag":1,"digest":"《Java Web开发实例大全（基础卷）》筛选、汇集了Java Web开发从基础知识到高级应用各个层面约60","duration":0,"fileid":500423019,"is_multi":0,"item_show_type":0,"multi_app_msg_item_list":[],"play_url":"","source_url":"","subtype":9,"title":"每日一书《Java Web开发实例大全(基础卷) 》"},"comm_msg_info":{"content":"","datetime":1521072000,"fakeid":"3009174698","id":1000000138,"status":2,"type":49}}]};
+        seajs.use("sougou/profile.js");
+</script>
+
+    </body>
+    <script nonce="" type="text/javascript">document.addEventListener("touchstart", function() {},false);</script>
+</html>
+<!--tailTrap<body></body><head></head><html></html>-->

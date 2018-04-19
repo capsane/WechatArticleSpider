@@ -131,7 +131,6 @@ def save_initial_biz(names, filename):
                 f_p.write(account[0]+","+account[1]+","+account[2] + "\n")
             else:   # not equal
                 f_ne.write(account[0]+","+account[1]+","+account[2] + "\n")
-
         print("save all done.")
     except Exception as e:
         print(e)

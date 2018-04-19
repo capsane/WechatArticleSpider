@@ -1,7 +1,40 @@
-# WechatArticleSpider
-Collect the information of Wechat official account articles
+# 业务逻辑
 
 > 输入：公众号列表(name, id)
+
+- 公众号历史文章:
+
+```text
+本次发布的共同信息：
+nickname, biz, can_message_continue, is_subscribed
+datetime, type(49), fakeid
+
+每篇文章的信息：
+author, content_url, copyright_stat, cover, del_flag, digest, fileid, source_url, title
+
+无法获得的信息：
+content
+read_num, like_num
+
+```
+
+- 文章内容requrl：biz+mid+idx唯一确定
+
+能够从响应中提取的信息：
+
+```text
+content
+appuin(biz), nickname, appmsg_type(9), publish_time(day), msg_title, msg_desc, msg_link, appmsgid(mid), msg_daily_idx, 
+source_encode_biz(原创biz), source_mid, source_idx, source_biz = "2390849143"
+copyright_stat = "2" * 1, appmsg_token， 
+```
+
+- 阅读数据requrl：由微信客户端在接收到文章内容的响应之后自动发送，可以通过文章内容中的appmsg_token+else确定。
+
+```text
+read_num, like_num
+```
+
 
 ## 1.公众号biz批量获取 
 
@@ -549,3 +582,39 @@ https://mp.weixin.qq.com/mp/getappmsgext?__biz=MjM5MzI5NzQ1MA==&appmsg_type=9&mi
 
 
 ## 工程模块
+
+### 海马玩模拟器
+
+使用WiFi，按住连接的WiFi进行配置，主要设置代理地址为本地主机地址，端口设为默认的8001。如果本机ip地址改变了了记得更新。
+
+### 2018.04.16 微信更新
+
+#### 崩溃1
+
+> 微信会存储浏览过的文章，所以当再次浏览该文章时，不会请求文章内容，而会直接请求阅读数据.
+
+暂时的解决办法，清除微信客户端的数据。
+
+#### 解决思路
+
+content和num分别请求mongodb.add
+content: insert or update 
+
+### 账号被封
+
+> 具体不知道访问限制
+
+- 每篇文章4-5s  （主要原因）
+- 每个公众号20-30s    （感觉这个至少4s+）
+- 每个batch 60-120s
+- 每30个account暂停10min    （这个应该是主要原因）
+
+## TODO
+
+### 1 log功能
+
+### 2 第二轮
+
+### 3 公众号表，统计公众号数据
+
+
